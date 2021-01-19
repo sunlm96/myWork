@@ -1,1 +1,254 @@
-{ "$schema": "http://json-schema.org/draft-04/schema#", "description": "", "additionalProperties": false, "type": "object", "properties": { "UNI_BSS_ATTACHED": { "additionalProperties": false, "type": "object", "properties": { "MEDIA_INFO": { "minLength": 0, "description": "info", "title": "MEDIA_INFO", "type": "string", "maxLength": 500 } }, "required": [ "MEDIA_INFO" ] }, "UNI_BSS_BODY": { "additionalProperties": false, "type": "object", "properties": { "MSG_NOTIFICATION_REQ": { "description": "", "additionalProperties": false, "type": "object", "properties": { "req": { "description": "", "additionalProperties": false, "type": "object", "properties": { "csc": { "description": "系统来源", "type": "string" }, "rtime": { "description": "时间格式： 2020-05-07 08:08:08", "type": "string" }, "params": { "description": "", "additionalProperties": false, "type": "object", "properties": { "msgType": { "minLength": 0, "description": "消息类型： 短信催单S1    语音催单T1   S2 短信验证码", "type": "string", "maxLength": 8 }, "receiveObject": { "minItems": 0, "maxItems": 20, "description": "", "type": "array", "items": [ { "description": "", "additionalProperties": false, "title": "arrayObject_0", "type": "object", "properties": { "orderStep": { "minLength": 0, "description": "订单环节ID", "type": "string", "maxLength": 20 }, "msgContent": { "minLength": 0, "description": "短信内容", "type": "string", "maxLength": 500 }, "orderStepName": { "minLength": 0, "description": "订单环节名称", "type": "string", "maxLength": 100 }, "receiveNumber": { "minLength": 0, "description": "接收短信联系电话", "type": "string", "maxLength": 50 }, "orderId": { "minLength": 0, "description": "订单枢纽客户订单编号", "type": "string", "maxLength": 20 }, "receiveStaffId": { "minLength": 0, "description": "接收短信员工工号", "type": "string", "maxLength": 20 }, "receiveStaffName": { "minLength": 0, "description": "接收短信员工姓名", "type": "string", "maxLength": 50 }, "remark": { "minLength": 0, "description": "备注信息", "type": "string", "maxLength": 100 }, "orderLineId": { "minLength": 0, "description": "订单枢纽业务订单编号", "type": "string", "maxLength": 20 } }, "required": [ "msgContent", "receiveNumber" ] } ] }, "systemCode": { "minLength": 0, "description": "系统编码", "type": "string", "maxLength": 20 }, "provinceCode": { "minLength": 0, "description": "省分编码", "type": "string", "maxLength": 8 }, "transNo": { "minLength": 0, "description": "流水号生成规则：省分编码+年月日时分秒+4位序列", "type": "string", "maxLength": 50 }, "eparchyCode": { "minLength": 0, "description": "地市编码", "type": "string", "maxLength": 20 } }, "required": [ "transNo", "msgType", "systemCode", "provinceCode", "receiveObject" ] } }, "required": [ "csc", "rtime", "params" ] } }, "required": [ "req" ] } }, "required": [ "MSG_NOTIFICATION_REQ" ] }, "UNI_BSS_HEAD": { "additionalProperties": false, "type": "object", "properties": { "APP_ID": { "minLength": 0, "description": "接入标识码", "title": "APP_ID", "type": "string", "maxLength": 40 }, "TIMESTAMP": { "minLength": 0, "description": "时间戳", "title": "TIMESTAMP", "type": "string", "maxLength": 24 }, "RESERVED": { "type": "array", "items": [ { "additionalProperties": false, "type": "object", "properties": { "RESERVED_VALUE": { "minLength": 0, "description": "", "title": "保留值", "type": "string", "maxLength": 50 }, "RESERVED_ID": { "minLength": 0, "description": "", "title": "保留ID", "type": "string", "maxLength": 20 } }, "required": [ "RESERVED_ID", "RESERVED_VALUE" ] } ] }, "TRANS_ID": { "minLength": 0, "description": "序列号", "title": "TRANS_ID", "type": "string", "maxLength": 32 }, "TOKEN": { "minLength": 0, "description": "访问令牌", "title": "TOKEN", "type": "string", "maxLength": 32 } }, "required": [ "APP_ID", "TIMESTAMP", "TRANS_ID", "TOKEN" ] } }, "required": [ "UNI_BSS_HEAD", "UNI_BSS_BODY" ] }
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+        "UNI_BSS_ATTACHED": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "MEDIA_INFO": {
+                    "minLength": 0,
+                    "description": "info",
+                    "title": "MEDIA_INFO",
+                    "type": "string",
+                    "maxLength": 500
+                }
+            },
+            "required": [
+                "MEDIA_INFO"
+            ]
+        },
+        "UNI_BSS_BODY": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "MSG_NOTIFICATION_REQ": {
+                    "description": "",
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "req": {
+                            "description": "",
+                            "additionalProperties": false,
+                            "type": "object",
+                            "properties": {
+                                "csc": {
+                                    "description": "系统来源",
+                                    "type": "string"
+                                },
+                                "rtime": {
+                                    "description": "时间格式： 2020-05-07 08:08:08",
+                                    "type": "string"
+                                },
+                                "params": {
+                                    "description": "",
+                                    "additionalProperties": false,
+                                    "type": "object",
+                                    "properties": {
+                                        "msgType": {
+                                            "minLength": 0,
+                                            "description": "消息类型： 短信催单S1    语音催单T1   S2 短信验证码",
+                                            "type": "string",
+                                            "maxLength": 8
+                                        },
+                                        "receiveObject": {
+                                            "minItems": 0,
+                                            "maxItems": 20,
+                                            "description": "",
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "description": "",
+                                                    "additionalProperties": false,
+                                                    "title": "arrayObject_0",
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "orderStep": {
+                                                            "minLength": 0,
+                                                            "description": "订单环节ID",
+                                                            "type": "string",
+                                                            "maxLength": 20
+                                                        },
+                                                        "msgContent": {
+                                                            "minLength": 0,
+                                                            "description": "短信内容",
+                                                            "type": "string",
+                                                            "maxLength": 500
+                                                        },
+                                                        "orderStepName": {
+                                                            "minLength": 0,
+                                                            "description": "订单环节名称",
+                                                            "type": "string",
+                                                            "maxLength": 100
+                                                        },
+                                                        "receiveNumber": {
+                                                            "minLength": 0,
+                                                            "description": "接收短信联系电话",
+                                                            "type": "string",
+                                                            "maxLength": 50
+                                                        },
+                                                        "orderId": {
+                                                            "minLength": 0,
+                                                            "description": "订单枢纽客户订单编号",
+                                                            "type": "string",
+                                                            "maxLength": 20
+                                                        },
+                                                        "receiveStaffId": {
+                                                            "minLength": 0,
+                                                            "description": "接收短信员工工号",
+                                                            "type": "string",
+                                                            "maxLength": 20
+                                                        },
+                                                        "receiveStaffName": {
+                                                            "minLength": 0,
+                                                            "description": "接收短信员工姓名",
+                                                            "type": "string",
+                                                            "maxLength": 50
+                                                        },
+                                                        "remark": {
+                                                            "minLength": 0,
+                                                            "description": "备注信息",
+                                                            "type": "string",
+                                                            "maxLength": 100
+                                                        },
+                                                        "orderLineId": {
+                                                            "minLength": 0,
+                                                            "description": "订单枢纽业务订单编号",
+                                                            "type": "string",
+                                                            "maxLength": 20
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "msgContent",
+                                                        "receiveNumber"
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "systemCode": {
+                                            "minLength": 0,
+                                            "description": "系统编码",
+                                            "type": "string",
+                                            "maxLength": 20
+                                        },
+                                        "provinceCode": {
+                                            "minLength": 0,
+                                            "description": "省分编码",
+                                            "type": "string",
+                                            "maxLength": 8
+                                        },
+                                        "transNo": {
+                                            "minLength": 0,
+                                            "description": "流水号生成规则：省分编码+年月日时分秒+4位序列",
+                                            "type": "string",
+                                            "maxLength": 50
+                                        },
+                                        "eparchyCode": {
+                                            "minLength": 0,
+                                            "description": "地市编码",
+                                            "type": "string",
+                                            "maxLength": 20
+                                        }
+                                    },
+                                    "required": [
+                                        "transNo",
+                                        "msgType",
+                                        "systemCode",
+                                        "provinceCode",
+                                        "receiveObject"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "csc",
+                                "rtime",
+                                "params"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "req"
+                    ]
+                }
+            },
+            "required": [
+                "MSG_NOTIFICATION_REQ"
+            ]
+        },
+        "UNI_BSS_HEAD": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "APP_ID": {
+                    "minLength": 0,
+                    "description": "接入标识码",
+                    "title": "APP_ID",
+                    "type": "string",
+                    "maxLength": 40
+                },
+                "TIMESTAMP": {
+                    "minLength": 0,
+                    "description": "时间戳",
+                    "title": "TIMESTAMP",
+                    "type": "string",
+                    "maxLength": 24
+                },
+                "RESERVED": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "additionalProperties": false,
+                            "type": "object",
+                            "properties": {
+                                "RESERVED_VALUE": {
+                                    "minLength": 0,
+                                    "description": "",
+                                    "title": "保留值",
+                                    "type": "string",
+                                    "maxLength": 50
+                                },
+                                "RESERVED_ID": {
+                                    "minLength": 0,
+                                    "description": "",
+                                    "title": "保留ID",
+                                    "type": "string",
+                                    "maxLength": 20
+                                }
+                            },
+                            "required": [
+                                "RESERVED_ID",
+                                "RESERVED_VALUE"
+                            ]
+                        }
+                    ]
+                },
+                "TRANS_ID": {
+                    "minLength": 0,
+                    "description": "序列号",
+                    "title": "TRANS_ID",
+                    "type": "string",
+                    "maxLength": 32
+                },
+                "TOKEN": {
+                    "minLength": 0,
+                    "description": "访问令牌",
+                    "title": "TOKEN",
+                    "type": "string",
+                    "maxLength": 32
+                }
+            },
+            "required": [
+                "APP_ID",
+                "TIMESTAMP",
+                "TRANS_ID",
+                "TOKEN"
+            ]
+        }
+    },
+    "required": [
+        "UNI_BSS_HEAD",
+        "UNI_BSS_BODY"
+    ]
+}
